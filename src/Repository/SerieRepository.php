@@ -16,6 +16,8 @@ class SerieRepository extends ServiceEntityRepository
         parent::__construct($registry, Serie::class);
     }
 
+
+
 //    /**
 //     * @return Serie[] Returns an array of Serie objects
 //     */

@@ -1,3 +1,107 @@
 body {
     background-color: skyblue;
 }
+
+body {    background: linear-gradient(#000000, #132135);
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;    color: #EEE;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+}
+.arrondi{    border-radius: 25px;
+    width:200px;
+}
+nav ul {    display:flex;
+    flex-display: row;
+    gap:2em;    list-style: none;
+}
+nav li a{    text-decoration: none;
+    color:inherit;}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px auto;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* En-tête */
+.styled-table thead tr {
+    background: linear-gradient(90deg, #00b894, #0984e3);
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Cellules */
+.styled-table th,
+.styled-table td {
+    padding: 15px 20px;
+    text-align: center;
+    color: #333333;
+}
+
+/* Lignes alternées */
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: #ffffff;
+}
+
+/* Ligne survolée */
+.styled-table tbody tr:hover {
+    background-color: #d0f0ea;
+    transform: scale(1.01);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+/* Dernière ligne */
+.styled-table tbody tr:last-of-type {
+    border-bottom: none;
+}
+
+.image-container {
+    text-align: center;
+}
+.styled-nav {
+    background: linear-gradient(90deg, #00b894, #0984e3);
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.styled-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* centre horizontalement les items */
+    gap: 30px; /* espace entre les items */
+}
+
+.styled-nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.styled-nav ul li a:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}

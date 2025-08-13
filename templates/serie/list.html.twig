@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{#{% block title %}{{ parent() - Catalogue() }}#}
+
+{% block body %}
+
+    <h1 class="styled-nav"> Liste </h1>
+
+    <table class="styled-table">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>status</th>
+            <th>Vote</th>
+            <th>Popularity</th>
+            <th>First air date</th>
+            <th>Last air date</th>
+
+        </tr>
+    {% for serie in series  %}
+        <tr>
+            <td>{{ serie.id }}</td>
+            <td>{{ serie.name }}</td>
+            <td>{{ serie.status }}</td>
+            <td>{{ serie.vote }}</td>
+            <td>{{ serie.popularity }}</td>
+            <td>{{ serie.firstAirDate|date('d/m/y') }}</td>
+            <td>{{ serie.lastAirDate|date('d/m/y') }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}
