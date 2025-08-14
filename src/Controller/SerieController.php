@@ -41,21 +41,42 @@ public function list(SerieRepository $serieRepository): Response{
     #[Route('/serie/list/{page}', name: 'list', methods: ['GET'], requirements: ['page' => '\d+'], defaults: ['page' => 1])]
     public function listReturning(SerieRepository $serieRepository,int $page,ParameterBagInterface $parameterBag): Response{
 
-    $nbrPerPage = $parameterBag->get('nbrPerPage');
+    $nbrPerPage = $parameterBag->get('serie')['nb_max'];
+    $offset = ($page -1) * $nbrPerPage;
+    $criteria = [
+        'status' => 'returning',
+        'genre' => 'drama',
+    ];
 
 
 
         $series = $serieRepository->findBy(
-            ['status' => 'returning', 'genre' => 'drama'],
+            $criteria,
             ['popularity' => 'DESC' ],
-        10,
-            0
+        $nbrPerPage,
+            $offset
         );
+        $total = $serieRepository->count($criteria);
+        $totalPages = ceil($total / $nbrPerPage);
 
         return $this->render('serie/list.html.twig', [
-            'series' => $series
+            'series' => $series,
+            'totPage' => $totalPages,
+            'page' => $page,
         ]);
 
+    }
+
+    #[route('/serie/list-custom', name: 'custome-list', methods: ['GET'])]
+    public function listCustum(SerieRepository $serieRepository):Response
+    {
+        $series = $serieRepository->findSeriesCustum(400,8);
+        return $this->render('serie/list.html.twig', [
+            'page'=>1,
+           'totPage'=>10,
+            'series'=>$series,
+
+        ]);
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Serie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\OrderBy;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -15,6 +16,28 @@ class SerieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Serie::class);
     }
+
+    public function findSeriesCustum(float $popularity, float $vote): array
+    {
+
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.popularity > :popularity AND s.firstAirDate > :date')
+            ->andWhere('s.vote > :vote')
+            ->orderBy('s.popularity', 'DESC')
+            ->addOrderBy('s.firstAirDate', 'DESC')
+            ->setParameter('popularity', $popularity)
+            ->setParameter('vote', $vote)
+            ->setParameter('date', new \DateTime('-5 years'))
+            ->setFirstResult(0)
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+
+
+    }
+
+
+
 
 
 
