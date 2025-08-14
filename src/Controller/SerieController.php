@@ -6,6 +6,7 @@ use App\Entity\Serie;
 use App\Repository\SerieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -34,5 +35,27 @@ public function list(SerieRepository $serieRepository): Response{
     return $this->render('serie/list.html.twig', [
         'series' => $series
     ]);
+
 }
+
+    #[Route('/serie/list/{page}', name: 'list', methods: ['GET'], requirements: ['page' => '\d+'], defaults: ['page' => 1])]
+    public function listReturning(SerieRepository $serieRepository,int $page,ParameterBagInterface $parameterBag): Response{
+
+    $nbrPerPage = $parameterBag->get('nbrPerPage');
+
+
+
+        $series = $serieRepository->findBy(
+            ['status' => 'returning', 'genre' => 'drama'],
+            ['popularity' => 'DESC' ],
+        10,
+            0
+        );
+
+        return $this->render('serie/list.html.twig', [
+            'series' => $series
+        ]);
+
+    }
+
 }
