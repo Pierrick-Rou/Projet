@@ -6,38 +6,62 @@
 
     <h1 class="styled-nav"> Liste </h1>
 
-
+    <div class="pagination-nav">
     {% if page > 1 %}
-        <a class="styled-nav" href="{{ path('list',{'page':page-1}) }}">page précédente</a>
+        <a class="styled-btn" href="{{ path('list',{'page':page-1}) }}">page précédente</a>
     {% endif %}
     {% if page < totPage %}
-        <a class="styled-nav" href="{{ path('list',{'page':page+1}) }}">page suivante</a>
+        <a class="styled-btn" href="{{ path('list',{'page':page+1}) }}">page suivante</a>
     {% endif %}
+    </div>
+    <div class="pagination-nav">
+        <p>Page {{ page }}</p>
+    </div>
 
-    <table class="styled-table">
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Genre</th>
-            <th>status</th>
-            <th>Vote</th>
-            <th>Popularity</th>
-            <th>First air date</th>
-            <th>Last air date</th>
+{#    <table class="styled-table">#}
+{#        <tr>#}
+{#            <th>Id</th>#}
+{#            <th>Nom</th>#}
+{#            <th>Genre</th>#}
+{#            <th>status</th>#}
+{#            <th>Vote</th>#}
+{#            <th>Popularity</th>#}
+{#            <th>First air date</th>#}
+{#            <th>Last air date</th>#}
 
-        </tr>
-    {% for serie in series  %}
-        <tr>
-            <td>{{ serie.id }}</td>
-            <td>{{ serie.name }}</td>
-            <td>{{ serie.genre }}</td>
-            <td>{{ serie.status }}</td>
-            <td>{{ serie.vote }}</td>
-            <td>{{ serie.popularity }}</td>
-            <td>{{ serie.firstAirDate|date('d/m/y') }}</td>
-            <td>{{ serie.lastAirDate|date('d/m/y') }}</td>
-        </tr>
-    {% endfor %}
-    </table>
+{#        </tr>#}
+{#    {% for serie in series  %}#}
+{#        <tr>#}
+{#            <td>{{ serie.id }}</td>#}
+{#            <td>{{ serie.name }}</td>#}
+{#            <td>{{ serie.genre }}</td>#}
+{#            <td>{{ serie.status }}</td>#}
+{#            <td>{{ serie.vote }}</td>#}
+{#            <td>{{ serie.popularity }}</td>#}
+{#            <td>{{ serie.firstAirDate|date('d/m/y') }}</td>#}
+{#            <td>{{ serie.lastAirDate|date('d/m/y') }}</td>#}
+{#        </tr>#}
+{#    {% endfor %}#}
+{#    </table>#}
+
+    <section class="series-grid">
+        {% for serie in series %}
+            <div class="serie-carde">
+            <h3>{{ serie.name }}</h3>
+                <a href="{{ path('_details',{'id' :serie.id}) }}">
+                    <img src="{{ asset('uploads/posters/series/' ~ serie.poster) }}" width="250px" alt="Poster de {{ serie.name }}" loading="lazy">
+                </a>
+            </div>
+        {% endfor %}
+    </section>
+
+    <div class="pagination-nav">
+    {% if page > 1 %}
+        <a class="styled-btn" href="{{ path('list',{'page':page-1}) }}">page précédente</a>
+    {% endif %}
+    {% if page < totPage %}
+        <a class="styled-btn" href="{{ path('list',{'page':page+1}) }}">page suivante</a>
+    {% endif %}
+    </div>
 
 {% endblock %}

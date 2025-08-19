@@ -17,7 +17,7 @@ class SerieFixtures extends Fixture
             $serie = new Serie();
             $serie->setName($faker->realText(25))
                 ->setOverview($faker->paragraph(3))
-                ->setGenre($faker->randomElement(['drama', 'animé', 'SF']))
+                ->setGenre($faker->randomElement(['Drama', 'Animé', 'SF']))
                 ->setStatus($faker->randomElement(['returning', 'ended', 'canceled']))
                 ->setVote($faker->randomFloat(2, 0, 10))
                 ->setPopularity($faker->randomFloat(2, 200, 1000))

@@ -74,6 +74,7 @@ nav li a{    text-decoration: none;
     text-align: center;
 }
 .styled-nav {
+
     background: linear-gradient(90deg, #00b894, #0984e3);
     border-radius: 10px;
     padding: 10px 20px;
@@ -81,6 +82,8 @@ nav li a{    text-decoration: none;
     max-width: 800px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
+    justify-content: center;
+
 }
 
 .styled-nav ul {
@@ -103,5 +106,51 @@ nav li a{    text-decoration: none;
 
 .styled-nav ul li a:hover {
     background-color: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+.pagination-nav {
+    display: flex;
+    justify-content: center; /* centre horizontalement */
+    gap: 20px; /* espace entre les boutons */
+    margin: 20px 0;
+}
+
+.styled-btn {
+    background: linear-gradient(90deg, #00b894, #0984e3);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.styled-btn:hover {
+    background: linear-gradient(90deg, #0984e3, #00b894);
+    transform: scale(1.05);
+}
+.series-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 3 colonnes */
+    gap: 30px; /* espace entre les cartes */
+    justify-items: center; /* centre horizontalement le contenu */
+    margin: 40px auto;
+    max-width: 1400px; /* limite la largeur max */
+}
+
+.serie-card {
+    text-align: center;
+}
+
+.serie-card img {
+    width: 220px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.serie-card img:hover {
     transform: scale(1.05);
 }

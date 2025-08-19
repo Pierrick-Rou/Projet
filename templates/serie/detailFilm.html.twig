@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {{ serie.name }}</h2>
+
+<span> genre : {{ serie.genre }}</span>
+<span> Statut : {{ serie.status }}</span>
+<span> {{ serie.firstAirDate|date }}</span>
+
+    <p>{{ serie.overview }}</p>
+
+    <a href="{{ path('_update',{id : serie.id}) }}">Editer</a>
+
+{% endblock %}
