@@ -24,7 +24,7 @@ Créer un projet symfony :
     ensuite sur la database sur la droite + -> data source ->my SQL
 
   pour générer un jeu de données fictives :
-    symfony composer require
+    symfony composer require --dev orm-fixtures
     symfony console make:fixtures
     symfony composer req fakerphp/faker  --dev
     symfony console doctrine:fixtures:load
