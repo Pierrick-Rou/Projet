@@ -39,6 +39,11 @@ Créer un projet symfony :
   symfony console make:do:mi:mi
   symfony console make:security:form-login  
 
+  dans config/packages/security.yaml : 
+        access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN } => permet de reserver toutes les routes a un role en fonction de la route (plus besoin de le faire dans le controller 
+        # - { path: ^/profile, roles: ROLE_USER }
+
   pour hasher un password manuellement  :  symfony console security:hash-password     
 
 
