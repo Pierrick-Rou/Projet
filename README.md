@@ -32,6 +32,15 @@ Créer un projet symfony :
   Créer un form à travers symfony :
      symfony console make:form   
 
+  Utiliser la sécurity avce symphony :
+  symfony server:ca:install
+  symfony console make:user
+  symfony console make:mi
+  symfony console make:do:mi:mi
+  symfony console make:security:form-login  
+
+  pour hasher un password manuellement  :  symfony console security:hash-password     
+
 
 //installer Composer
    symfony composer install
