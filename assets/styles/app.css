@@ -154,3 +154,12 @@ nav li a{    text-decoration: none;
 .serie-card img:hover {
     transform: scale(1.05);
 }
+.my-form {
+    max-width: 500px;         /* largeur max */
+    margin: 50px auto;        /* centré horizontalement + espace en haut/bas */
+    padding: 20px;            /* espace intérieur */
+    border: 1px solid #ccc;   /* bordure grise */
+    border-radius: 10px;      /* coins arrondis */
+    background: #293972;         /* fond blanc */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* petite ombre */
+}

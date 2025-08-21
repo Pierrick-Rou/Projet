@@ -8,6 +8,7 @@ use App\Entity\Serie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -15,6 +16,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Validator\Constraints\File;
 
 class SerieType extends AbstractType
 {
@@ -23,7 +25,7 @@ class SerieType extends AbstractType
         $builder
             ->add('name',TextType::class,[
                 'label' => 'Nom de la série',
-                'required' => true,
+                'required' => false,
             ])
             ->add('overview', TextareaType::class,[])
             ->add('status', ChoiceType::class,[
@@ -54,7 +56,18 @@ class SerieType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('backdrop')
-            ->add('poster')
+            ->add('poster_file', FileType::class, [
+                'required' => false,
+                'mapped' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'maxSizeMessage' => 'nanani',
+
+
+                            ]
+                )]
+            ])
             ->add('tmbdId')
             ->add('submit', SubmitType::class);
 

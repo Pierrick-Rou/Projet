@@ -10,6 +10,16 @@
 
     <p>{{ serie.overview }}</p>
 
+    <ul>
+        {% for season in serie.seasons %}
+            <li>Saison {{ season.number }} - {{ season.overview }}</li>
+        {% endfor %}
+    </ul>
+
     <a href="{{ path('_update',{id : serie.id}) }}">Editer</a>
+
+    <a href="{{ path('_delete', {id: serie.id, token : csrf_token('delete'~serie.id)}) }}"> Supprimer</a>
+
+    <a href="{{ path('season_create') }}">Ajouter une saison</a>
 
 {% endblock %}

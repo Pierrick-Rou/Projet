@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent() }} - Editer une saison {% endblock %}
+
+{% block body %}
+
+    <h1> Editer une saison </h1>
+
+    <div>
+        {{ form_start(season_form, { 'attr': {'class': 'my-form'} }) }}
+        {{ form_row(season_form.serie) }}
+        {{ form_row(season_form.number) }}
+        {{ form_row(season_form.overview) }}
+        {{ form_end(season_form) }}
+    </div>
+
+{% endblock %}

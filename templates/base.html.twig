@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -11,13 +11,23 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
+    <div class="background">
     <body>
     <div  class="image-container"><img classe="imgCentre" src="{{ asset('images/jinx.png') }}" class="arrondi" alt="logo Eniflix"></div>
     <nav  class="styled-nav">
         <ul>
             <li><a href="{{ path('home') }}">Home</a></li>
-            <li><a href="">Catalogue</a></li>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('_create') }}">Ajouter un Film</a></li>
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED') %}
             <li><a href="{{ path('list') }}">Liste des films</a></li>
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED') %}
+            <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
+            {% else %}
+            <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+            {% endif %}
         </ul>
     </nav>
 
@@ -33,4 +43,5 @@
 
     {% block body %}{% endblock %}
     </body>
+    </div>
 </html>
